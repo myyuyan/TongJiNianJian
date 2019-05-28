@@ -1,0 +1,15 @@
+Index: bin/connect.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bin/connect.py	(date 1559059296000)
++++ bin/connect.py	(date 1559059436491)
+@@ -1,4 +1,4 @@
+ import pymongo
+ from conf.config import *
+ def connect():
+-    client = pymongo.MongoClient()
+\ No newline at end of file
++    client = pymongo.MongoClient(host=MONGODB_HOST,port=MONGODB_PORT)
+\ No newline at end of file
