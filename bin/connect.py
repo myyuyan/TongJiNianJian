@@ -5,3 +5,5 @@ def connect():
     db = client[DB]
     collection = db[COLLECTION]
     return collection
+
+collection = connect()

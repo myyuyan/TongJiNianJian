@@ -11,3 +11,7 @@ headers = {
     'Accept':'text/plain, */*; q=0.01',
     'Content-Type':'application/x-www-form-urlencoded'
 }
+
+url = 'http://data.stats.gov.cn/easyquery.htm'
+
+data_url = 'http://data.stats.gov.cn/easyquery.htm?'
