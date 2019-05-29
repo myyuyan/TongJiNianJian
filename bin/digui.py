@@ -5,9 +5,14 @@ from bin.connect import collection
 import time
 
 def init_url(data):
-    headers['User-Agent'] = User_Agent[random.randint(0,len(User_Agent)-1)]
-    page = requests.post(url=url, data=data, headers=headers)
-    page_jsons = page.json()
+    while True:
+        try:
+            headers['User-Agent'] = User_Agent[random.randint(0,len(User_Agent)-1)]
+            page = requests.post(url=url, data=data, headers=headers)
+            page_jsons = page.json()
+            break
+        except:
+            pass
     for page_json in page_jsons:
         if page_json['isParent']:
             page_data = {
@@ -26,9 +31,14 @@ def init_url(data):
                 'wds': json.dumps([]),
                 'dfwds': json.dumps([{"wdcode": "zb", "valuecode": page_json['id']}])
             }
-            headers['User-Agent'] = User_Agent[random.randint(0, len(User_Agent) - 1)]
-            page_data_k = requests.get(url=data_url,params=kw,headers=headers)
-            page_data_json = page_data_k.json()
+            while True:
+                try:
+                    headers['User-Agent'] = User_Agent[random.randint(0, len(User_Agent) - 1)]
+                    page_data_k = requests.get(url=data_url,params=kw,headers=headers)
+                    page_data_json = page_data_k.json()
+                    break
+                except:
+                    pass
             num_to_string = {}
             for page_data_ye in page_data_json['returndata']['wdnodes']:
                 if page_data_ye['wdcode']=='zb':
