@@ -2,8 +2,10 @@ import requests
 from conf.config import *
 import json
 from bin.connect import collection
+import time
 
 def init_url(data):
+    headers['User-Agent'] = User_Agent[random.randint(0,len(User_Agent)-1)]
     page = requests.post(url=url, data=data, headers=headers)
     page_jsons = page.json()
     for page_json in page_jsons:
@@ -24,6 +26,7 @@ def init_url(data):
                 'wds': json.dumps([]),
                 'dfwds': json.dumps([{"wdcode": "zb", "valuecode": page_json['id']}])
             }
+            headers['User-Agent'] = User_Agent[random.randint(0, len(User_Agent) - 1)]
             page_data_k = requests.get(url=data_url,params=kw,headers=headers)
             page_data_json = page_data_k.json()
             num_to_string = {}
